@@ -1,207 +1,71 @@
-@import "https://fonts.googleapis.com/css2?family=Roboto&display=swap";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 :root {
-    --color-green: #50fa7b;
-    --color-purple: #9159c1;
+    --color-darkgrey: #282a36;
+    --color-white: #F0F0F2;
+    --color-orange: #F27405;
+    --color-darkorange: #F25C05;
+    --color-darkestorange: #D93D04;
+    --color-brown: #591202;
 }
 
 * {
     margin: 0;
     padding: 0;
-    border: 0;
-    
+    border: none;
 }
+
 body {
-    background: #282a36;
-    color: white;
+    background-color: var(--color-darkgrey);
     font-family: 'Roboto', sans-serif;
 }
-header{
-    padding: 30px;
-    background: rgba(0,0,0,0.1);
-}
-header div {
-    text-align: center;
-}
-header div a {
-    color: white;
-    font-size: 18px;
-    margin: 0 30px;
-    text-decoration: none;
-}
-header div a:hover {
-    color: var(--color-green);
-    transition-delay: 150ms;
-}
 
-
-#wrapper {
-    text-align: center;
-    padding: 32px;
-}
-
-#wrapper img {
-    border-radius: 50%;
-    border: 5px solid var(--color-green);
-    margin-bottom: 32px;
-    height: 300px;
-}
-
-#wrapper h1 {
-    font-size: 42px;
-    line-height: 52px;
-    font-weight: bold;
-    color: var(--color-green);
-}
-
-#wrapper p {
-    max-width: 500px;
-    margin: 32px auto;
-    font-size: 24px;
-    line-height: 34px;
-}
-
-
-#wrapper ul {
-    max-width: 500px;
-    margin: 50px auto;
-    font-size: 38px;
-    line-height: 48px;
-}
-
-#wrapper li {
-    font-size: 24px;
-    line-height: 34px;
-    text-align: left;
-}
-
-#linksFooter {
-    text-align: center;
-    padding: 32px;
-}
-
-#linksFooter a{
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    margin: 0 30px;
-}
-
-#linksFooter a:hover{
-    color: var(--color-green);
-    transition-delay: 150ms;
-}
-
-/* POSTS */
-.cards {
-    max-width: 800px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-}
-
-.card {
-    background-color: var(--color-purple);
-    display: grid;
-    cursor: pointer;
-}
-
-.CardImgContainer img{
-    width: 100%; /* Para Respeitar o tamanho dos cards */
-}
-
-.cardContainer,
-.cardInfo {
-    padding: 24px;
-}
-
-.cardInfo {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-}
-
-.tempoLeitura {
-    background-color: var(--color-purple);
-    filter: brightness(90%);
-    padding: 10px 20px;
-    border-radius: 20px;
-    text-align: center;
-}
-
-.ModalOverlay {
-    background-color: rgba(0,0,0,0.7);
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    opacity: 0;
-    visibility: hidden;
-}
-
-.modal {
+header {
     background-color: white;
-    width: 90%;
-    height: 90%;
-    margin: 5vh auto;
-    position: relative;
-}
-
-.modal .CloseModal {
-    color:black;
-    position: absolute;
-    right: 8px;
-    top: 8px;
-    cursor: pointer;
-}
-
-.ModalOverlay.active{
-    opacity: 1;
-    visibility: visible;
-}
-
-iframe {
     width: 100%;
-    height: 90%;
-    position: absolute;
-    top: 5%;
-}
-
-.modal .MaximizeModal { /* Botao de maximizar */
-    color:black;
-    position: absolute;
-    right: 40px;
-    top: 16px;
-    cursor: pointer;
-}
-
-.maximize {
-    width: 100%;
-    height: 100%;
-    margin: 5vh auto;
-}
-
-.error404 p {
+    padding: 32px;
     text-align: center;
-    font-size: 24px;
+    box-sizing: border-box; /* Faz com que leve o conteudo ate o limite do conteudo */
 }
 
-/* = = = = POST PAGE = = = = */
-.post {
-    margin: 0 auto; /* Em cima e embaixo eh zero e nas laterais se alinha ao meio */
-    max-width: 1000px;
-
+.links {
+    font-size: 22px;
 }
 
-.CardPostContainer {
+/* Pegue o a que seja precedido de outro a */
+.links a + a { 
+    margin-left: 32px;
+}
+
+.links a{
+    text-decoration: none;
+    color: var(--color-orange);
     position: relative;
-    padding-top: 62.5%;
 }
 
-.CardPostContainer iframe {
-    width: 100%;
-    height: 100%;
+/* Quando links a tiver com a classe active (estar na pagina) */
+.links a.active {
+    font-weight: bold;
+    color: var(--color-darkorange);
+}
+
+.links a:hover {
+    color: var(--color-darkestorange);
+}
+
+.links a::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background-color: var(--color-brown);
     position: absolute;
-    top: 0;
+    left: 0;
+    bottom: -4px;
+    transition: width;
+}
+
+/* Pseudo elemento */
+.links a:hover::after {
+    width: 100%;
+    transition: width 200ms ease-in-out;
 }
